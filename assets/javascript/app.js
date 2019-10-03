@@ -52,7 +52,7 @@ var questions = [{
     correctAnswer: "Johnathan Beasley",
     image: "assets/images/jb.jpg"
 }, {
-    question: "Who recieved the most Heisman votes for the year they were up for the award?",
+    question: "Who received the most Heisman votes for the year they were up for the award?",
     answers: ["Ell Roberson", "Darren Sproles", "Collin Klein", "Michael Bishop"],
     correctAnswer: "Michael Bishop",
     image: "assets/images/mb.jpg"
