@@ -1,6 +1,8 @@
 $("#start").on("click", function () {
     $("#start").remove();
+    game.loadQuestion();
 })
+
 
 var questions = [{
     question: "What is #43 Darren Sproles' nickname?",
@@ -56,29 +58,44 @@ var questions = [{
 }];
 
 var game = {
-    questions:questions,
-    currentQuestions:0,
-    counter:30,
-    correct:0,
-    incorrect:0,
-    countdown: function(){
+    question: questions,
+    currentQuestion: 0,
+    counter: 30,
+    correct: 0,
+    incorrect: 0,
+    countdown: function () {
+        game.counter--;
+        $(`#counter`).html(game.counter);
+        if (game.counter <= 0) {
+            console.log("TIME UP!");
+            game.timeUp();
+        }
     },
-    loadQuestion: function(){
-    },
-    nextQuestion: function(){
-    },
-    timeUp: function(){
-    },
-    results: function(){
-    },
-    clicked: function(){
-    },
-    answeredCorrectly: function(){
-    },
-    answeredIncorrectly: function(){
-    },
-    reset: function(){
+    loadQuestion: function () {
+        timer = setInterval(game.countdown, 1000);
+        $(`#subwrapper`).html(`<h2>` + questions[game.currentQuestion].
+            question + `</h2>`);
+        for (var i=0;i<questions[game.currentQuestion].answers.length;i++){
+            $(`#subwrapper`).append(`<button class="answer-button" 
+            id="button-`+i+`" data-name="`+questions[game.currentQuestion].answers[i]+`">`+questions[game.currentQuestion].answers[i]+`</button>`);
+        }
+        
+        },
+        nextQuestion: function () {
+        },
+        timeUp: function () {
+        },
+        results: function () {
+        },
+        clicked: function () {
+        },
+        answeredCorrectly: function () {
+        },
+        answeredIncorrectly: function () {
+        },
+        reset: function () {
+
+        }
+
+
     }
-
-
-}
