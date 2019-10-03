@@ -85,6 +85,10 @@ var game = {
         
         },
         nextQuestion: function () {
+            game.counter = 30;
+            $(`#counter`).html(game.counter);
+            game.currentQuestion++;
+            game.loadQuestion();
         },
         timeUp: function () {
         },
