@@ -3,6 +3,9 @@ $("#start").on("click", function () {
     game.loadQuestion();
 })
 
+$(document).on(`click`,`.answer-button`,function(e){
+    game.clicked(e);
+})
 
 var questions = [{
     question: "What is #43 Darren Sproles' nickname?",
@@ -87,11 +90,21 @@ var game = {
         },
         results: function () {
         },
-        clicked: function () {
+        clicked: function(e) {
+            clearInterval(timer);
+            if($(e.target).data("name")==questions[game.currentQuestion].
+                correctAnswer){
+                game.answeredCorrectly();
+            }   else { 
+                game.answeredIncorrectly();
+
+            }
         },
         answeredCorrectly: function () {
+            console.log("NAH YOU GOT IT!");
         },
         answeredIncorrectly: function () {
+            console.log("NAH YOU DONT");
         },
         reset: function () {
 
