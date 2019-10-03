@@ -101,10 +101,28 @@ var game = {
             }
         },
         answeredCorrectly: function () {
-            console.log("NAH YOU GOT IT!");
+            console.log("TOUCHDOWN!");
+            clearInterval(timer);
+            game.correct++;
+            $(`#subwrapper`).html(`<h2>TOUCHDOWN!</h2>`);
+            if(game.currentQuestion==questions.length-1){
+                setTimeout(game.results,3*1000);
+            }  else{
+                setTimeout(game.nextQuestion,3*1000);
+            }
+
         },
         answeredIncorrectly: function () {
-            console.log("NAH YOU DONT");
+            console.log("WIDE RIGHT NO GOOD!");
+            clearInterval(timer);
+            game.incorrect++;
+            $(`#subwrapper`).html(`<h2>WIDE RIGHT NO GOOD!</h2>`);
+            if(game.currentQuestion==questions.length-1){
+                setTimeout(game.results,3*1000);
+            } else{
+                setTimeout(game.nextQuestion,3*1000);
+            }
+            
         },
         reset: function () {
 
